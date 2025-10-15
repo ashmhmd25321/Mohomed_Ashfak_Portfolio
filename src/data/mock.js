@@ -9,7 +9,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/mohomedashfak09823a/",
   github: "https://github.com/ashmhmd25321",
   summary: "Results-driven and adaptable Software Developer with strong expertise in full-stack web development, mobile applications, and machine learning solutions. Experienced in designing and deploying scalable systems, including React, Flutter, Java, and Python-based applications, with a focus on UI/UX excellence, security, and performance.",
-  profileImage: "/images/mohomed-ashfak.jpeg"
+  profileImage: "./images/mohomed-ashfak.jpeg"
 };
 
 export const skills = [
@@ -43,7 +43,7 @@ export const projects = [
     technologies: ["React", "Spring Boot", "MySQL", "Docker", "Stripe Integration", "Real-time Chat"],
     demoUrl: "https://skill-exchange.dreamware.lk/",
     githubUrl: "#",
-    image: "/images/skill-exchange-platform/feed page.png",
+    image: "./images/skill-exchange-platform/feed page.png",
     featured: true
   },
   {
@@ -53,7 +53,7 @@ export const projects = [
     technologies: ["Java 17", "Spring Boot 3.2.0", "Spring Security", "React 18", "MySQL", "Tailwind CSS", "Framer Motion"],
     demoUrl: "https://homework.dreamware.lk/",
     githubUrl: "#",
-    image: "/images/LearnHub/landing-page.png",
+    image: "./images/LearnHub/landing-page.png",
     featured: true
   },
   {
@@ -63,7 +63,7 @@ export const projects = [
     technologies: ["React", "Node.js", "E-commerce", "Payment Integration"],
     demoUrl: "https://pcmart.templates.dreamware.lk/",
     githubUrl: "#",
-    image: "/images/PCMart/Screenshot 2025-10-15 at 20.01.20.png",
+    image: "./images/PCMart/Screenshot 2025-10-15 at 20.01.20.png",
     featured: true
   }
 ];

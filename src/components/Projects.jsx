@@ -8,36 +8,36 @@ const Projects = () => {
   const getProjectScreenshots = (projectId) => {
     if (projectId === 1) {
       return [
-        "/images/skill-exchange-platform/feed page.png",
-        "/images/skill-exchange-platform/sessions page.png",
-        "/images/skill-exchange-platform/skill management page.png",
-        "/images/skill-exchange-platform/credits and payments.png",
-        "/images/skill-exchange-platform/admin dashboard.png",
-        "/images/skill-exchange-platform/login.png",
-        "/images/skill-exchange-platform/register.png",
-        "/images/skill-exchange-platform/chatbot.png",
-        "/images/skill-exchange-platform/topup credits.png"
+        "./images/skill-exchange-platform/feed page.png",
+        "./images/skill-exchange-platform/sessions page.png",
+        "./images/skill-exchange-platform/skill management page.png",
+        "./images/skill-exchange-platform/credits and payments.png",
+        "./images/skill-exchange-platform/admin dashboard.png",
+        "./images/skill-exchange-platform/login.png",
+        "./images/skill-exchange-platform/register.png",
+        "./images/skill-exchange-platform/chatbot.png",
+        "./images/skill-exchange-platform/topup credits.png"
       ];
     }
     if (projectId === 2) {
       return [
-        "/images/LearnHub/landing-page.png",
-        "/images/LearnHub/login.png",
-        "/images/LearnHub/register.png",
-        "/images/LearnHub/adminDashboard.png",
-        "/images/LearnHub/classes-view.png",
-        "/images/LearnHub/usermanage.png",
-        "/images/LearnHub/profile.png"
+        "./images/LearnHub/landing-page.png",
+        "./images/LearnHub/login.png",
+        "./images/LearnHub/register.png",
+        "./images/LearnHub/adminDashboard.png",
+        "./images/LearnHub/classes-view.png",
+        "./images/LearnHub/usermanage.png",
+        "./images/LearnHub/profile.png"
       ];
     }
     if (projectId === 3) {
       return [
-        "/images/PCMart/Screenshot 2025-10-15 at 20.01.20.png",
-        "/images/PCMart/Screenshot 2025-10-15 at 20.01.31.png",
-        "/images/PCMart/Screenshot 2025-10-15 at 20.01.46.png",
-        "/images/PCMart/Screenshot 2025-10-15 at 20.01.53.png",
-        "/images/PCMart/Screenshot 2025-10-15 at 20.02.03.png",
-        "/images/PCMart/Screenshot 2025-10-15 at 20.02.13.png"
+        "./images/PCMart/Screenshot 2025-10-15 at 20.01.20.png",
+        "./images/PCMart/Screenshot 2025-10-15 at 20.01.31.png",
+        "./images/PCMart/Screenshot 2025-10-15 at 20.01.46.png",
+        "./images/PCMart/Screenshot 2025-10-15 at 20.01.53.png",
+        "./images/PCMart/Screenshot 2025-10-15 at 20.02.03.png",
+        "./images/PCMart/Screenshot 2025-10-15 at 20.02.13.png"
       ];
     }
     return [projects.find(p => p.id === projectId)?.image || ""];
