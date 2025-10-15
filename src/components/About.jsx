@@ -27,11 +27,14 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-black relative">
-      {/* Simple Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
+    <section id="about" className="py-20 bg-gray-800 relative">
+      {/* Mixed Color Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-slate-700 to-gray-900"></div>
       
-      {/* Subtle accent */}
+      {/* Additional color accent */}
+      <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+      
+      {/* Subtle red accent */}
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-6 relative z-10">
