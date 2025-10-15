@@ -5,7 +5,7 @@ export const personalInfo = {
   title: "Software Developer",
   location: "Kurunegala, Sri Lanka",
   email: "ashfak25321@gmail.com",
-  phone: "+94719101215",
+  phone: "+94773098074",
   linkedin: "https://www.linkedin.com/in/mohomedashfak09823a/",
   github: "https://github.com/ashmhmd25321",
   summary: "Results-driven and adaptable Software Developer with strong expertise in full-stack web development, mobile applications, and machine learning solutions. Experienced in designing and deploying scalable systems, including React, Flutter, Java, and Python-based applications, with a focus on UI/UX excellence, security, and performance.",
@@ -39,32 +39,32 @@ export const projects = [
   {
     id: 1,
     name: "Skill Exchange Platform",
-    description: "A comprehensive, turnkey solution that creates a thriving community where people trade their knowledge in a simple, fair, and engaging way. Features user profiles, smart search, session scheduling, built-in chat, and secure payment processing.",
+    description: "A comprehensive platform where users trade knowledge through scheduled sessions, featuring real-time chat, smart search, and secure payments.",
     technologies: ["React", "Spring Boot", "MySQL", "Docker", "Stripe Integration", "Real-time Chat"],
     demoUrl: "https://skill-exchange.dreamware.lk/",
     githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop",
+    image: "/images/skill-exchange-platform/feed page.png",
     featured: true
   },
   {
     id: 2,
     name: "LearnHub - Your Learning Companion",
-    description: "A comprehensive educational management platform for primary education institutions. Features homework management, student submissions, grading system, role-based access control, and gamification elements.",
+    description: "Educational platform for schools with homework management, student submissions, grading system, and role-based access control.",
     technologies: ["Java 17", "Spring Boot 3.2.0", "Spring Security", "React 18", "MySQL", "Tailwind CSS", "Framer Motion"],
     demoUrl: "https://homework.dreamware.lk/",
     githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop",
+    image: "/images/LearnHub/landing-page.png",
     featured: true
   },
   {
     id: 3,
     name: "PCMart E-commerce Platform", 
-    description: "A full-featured e-commerce platform specializing in computer hardware and PC accessories. Features advanced filtering, product comparison, inventory management, and secure payment processing.",
+    description: "E-commerce platform for PC hardware with advanced filtering, product comparison, inventory management, and secure payments.",
     technologies: ["React", "Node.js", "E-commerce", "Payment Integration"],
     demoUrl: "https://pcmart.templates.dreamware.lk/",
     githubUrl: "#",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
-    featured: false
+    image: "/images/PCMart/Screenshot 2025-10-15 at 20.01.20.png",
+    featured: true
   }
 ];
 

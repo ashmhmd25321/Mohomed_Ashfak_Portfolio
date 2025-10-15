@@ -27,74 +27,76 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-800 relative">
-      {/* Mixed Color Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-slate-700 to-gray-900"></div>
-      
-      {/* Additional color accent */}
-      <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-      
-      {/* Subtle red accent */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl"></div>
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              About <span className="text-red-500">Me</span>
-            </h2>
-            <div className="w-24 h-1 bg-red-500 mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Text Content */}
-            <div className="space-y-6">
-              <div className="prose prose-lg text-gray-300">
-                <p className="text-xl leading-relaxed font-medium text-white">
-                  I'm a passionate developer driven by solving complex problems and transforming ideas into user-friendly, efficient digital solutions that make a real impact for users and businesses.
-                </p>
-                
-                <p className="text-lg leading-relaxed text-gray-300">
-                  I focus on hands-on experimentation and continuous learning, ensuring code quality through clean architecture, proper testing, and industry best practices. My proudest achievements include developing intelligent machine learning solutions, full-stack web applications, and mobile apps that combine innovation with practical usability.
-                </p>
+        <section id="about" className="py-12 sm:py-16 md:py-20 bg-gray-800 relative">
+          {/* Mixed Color Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-slate-700 to-gray-900"></div>
+          
+          {/* Additional color accent */}
+          <div className="absolute top-1/3 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+          
+          {/* Subtle red accent */}
+          <div className="absolute top-1/4 right-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-red-500/5 rounded-full blur-3xl"></div>
+          
+          <div className="container mx-auto px-4 sm:px-6 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              {/* Section Header */}
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
+                  About <span className="text-red-500">Me</span>
+                </h2>
+                <div className="w-24 h-1 bg-red-500 mx-auto rounded-full"></div>
               </div>
 
-              {/* Key Stats */}
-              <div className="grid grid-cols-3 gap-6 py-8 border-t border-gray-700">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-red-500 mb-2">15+</div>
-                  <div className="text-gray-300 font-medium">Projects Delivered</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-red-500 mb-2">8+</div>
-                  <div className="text-gray-300 font-medium">Technologies</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-red-500 mb-2">3+</div>
-                  <div className="text-gray-300 font-medium">Years Experience</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Highlights */}
-            <div className="space-y-6">
-              {highlights.map((highlight, index) => (
-                <div key={index} className="flex items-start gap-4 p-6 bg-gray-900/50 rounded-xl hover:bg-red-500/10 transition-colors duration-300 group border border-gray-800">
-                  <div className="flex-shrink-0 p-3 bg-gray-800 rounded-lg shadow-md group-hover:bg-red-500 group-hover:text-white transition-all duration-300 text-red-500">
-                    {highlight.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">
-                      {highlight.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {highlight.description}
+              <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+                {/* Left Column - Text Content */}
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="prose prose-lg text-gray-300">
+                    <p className="text-lg sm:text-xl leading-relaxed font-medium text-white">
+                      I'm a passionate developer driven by solving complex problems and transforming ideas into user-friendly, efficient digital solutions that make a real impact for users and businesses.
+                    </p>
+                    
+                    <p className="text-base sm:text-lg leading-relaxed text-gray-300">
+                      I focus on hands-on experimentation and continuous learning, ensuring code quality through clean architecture, proper testing, and industry best practices. My proudest achievements include developing intelligent machine learning solutions, full-stack web applications, and mobile apps that combine innovation with practical usability.
                     </p>
                   </div>
+
+                  {/* Key Stats */}
+                  <div className="grid grid-cols-3 gap-3 sm:gap-6 py-6 sm:py-8 border-t border-gray-700">
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-red-500 mb-1 sm:mb-2">15+</div>
+                      <div className="text-gray-300 font-medium text-sm sm:text-base">Projects Delivered</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-red-500 mb-1 sm:mb-2">8+</div>
+                      <div className="text-gray-300 font-medium text-sm sm:text-base">Technologies</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-bold text-red-500 mb-1 sm:mb-2">3+</div>
+                      <div className="text-gray-300 font-medium text-sm sm:text-base">Years Experience</div>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
+
+                {/* Right Column - Highlights */}
+                <div className="space-y-4 sm:space-y-6">
+                  {highlights.map((highlight, index) => (
+                    <div key={index} className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-gray-900/50 rounded-xl hover:bg-red-500/10 transition-colors duration-300 group border border-gray-800">
+                      <div className="flex-shrink-0 p-2 sm:p-3 bg-gray-800 rounded-lg shadow-md group-hover:bg-red-500 group-hover:text-white transition-all duration-300 text-red-500">
+                        <div className="h-6 w-6 sm:h-8 sm:w-8">
+                          {highlight.icon}
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
+                          {highlight.title}
+                        </h3>
+                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
+                          {highlight.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
           </div>
         </div>
       </div>
