@@ -20,22 +20,22 @@ const Skills = () => {
 
   const getSkillIcon = (skill) => {
     const iconMap = {
-      'React': <Code2 className="h-5 w-5" />,
-      'JavaScript': <FileText className="h-5 w-5" />,
-      'TypeScript': <Code2 className="h-5 w-5" />,
-      'Java': <Cpu className="h-5 w-5" />,
-      'Python': <Terminal className="h-5 w-5" />,
-      'Spring Boot': <Server className="h-5 w-5" />,
-      'Node.js': <Zap className="h-5 w-5" />,
-      'MySQL': <Database className="h-5 w-5" />,
-      'MongoDB': <Database className="h-5 w-5" />,
-      'Docker': <Layers className="h-5 w-5" />,
-      'Flutter': <Smartphone className="h-5 w-5" />,
-      'HTML': <Globe className="h-5 w-5" />,
-      'CSS': <Globe className="h-5 w-5" />,
-      'Git': <GitBranch className="h-5 w-5" />,
-      'AWS': <Cloud className="h-5 w-5" />,
-      default: <Code2 className="h-5 w-5" />
+      'React': <Code2 className="h-full w-full" />,
+      'JavaScript': <FileText className="h-full w-full" />,
+      'TypeScript': <Code2 className="h-full w-full" />,
+      'Java': <Cpu className="h-full w-full" />,
+      'Python': <Terminal className="h-full w-full" />,
+      'Spring Boot': <Server className="h-full w-full" />,
+      'Node.js': <Zap className="h-full w-full" />,
+      'MySQL': <Database className="h-full w-full" />,
+      'MongoDB': <Database className="h-full w-full" />,
+      'Docker': <Layers className="h-full w-full" />,
+      'Flutter': <Smartphone className="h-full w-full" />,
+      'HTML': <Globe className="h-full w-full" />,
+      'CSS': <Globe className="h-full w-full" />,
+      'Git': <GitBranch className="h-full w-full" />,
+      'AWS': <Cloud className="h-full w-full" />,
+      default: <Code2 className="h-full w-full" />
     };
     return iconMap[skill] || iconMap.default;
   };
@@ -112,12 +112,12 @@ const Skills = () => {
                         {category.technologies.map((tech, index) => (
                           <div
                             key={index}
-                            className={`${getSkillColor(tech)} px-2 sm:px-4 py-2 sm:py-3 rounded-lg font-medium text-center transform hover:scale-105 transition-all duration-300 cursor-pointer hover:shadow-md flex items-center justify-center gap-1 sm:gap-2`}
+                            className={`${getSkillColor(tech)} px-3 sm:px-4 py-2 sm:py-3 rounded-lg font-medium text-center transform hover:scale-105 transition-all duration-300 cursor-pointer hover:shadow-md flex items-center justify-center gap-1.5 sm:gap-2`}
                           >
-                            <div className="h-3 w-3 sm:h-4 sm:w-4">
+                            <div className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0">
                               {getSkillIcon(tech)}
                             </div>
-                            <span className="text-xs sm:text-sm">{tech}</span>
+                            <span className="text-xs sm:text-sm whitespace-nowrap">{tech}</span>
                           </div>
                         ))}
                       </div>
@@ -135,12 +135,12 @@ const Skills = () => {
                   {skills.flatMap(category => category.technologies).map((tech, index) => (
                     <span
                       key={index}
-                      className={`${getSkillColor(tech)} px-2 sm:px-3 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-medium transform hover:scale-105 transition-all duration-300 flex items-center gap-1 sm:gap-2`}
+                      className={`${getSkillColor(tech)} px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transform hover:scale-105 transition-all duration-300 flex items-center gap-1.5 sm:gap-2`}
                     >
-                      <div className="h-3 w-3 sm:h-4 sm:w-4">
+                      <div className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0">
                         {getSkillIcon(tech)}
                       </div>
-                      <span>{tech}</span>
+                      <span className="whitespace-nowrap">{tech}</span>
                     </span>
                   ))}
                 </div>
