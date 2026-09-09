@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Mohomed_Ashfak_Portfolio/static/css/main.fc13b510.css",
+    "main.css": "/Mohomed_Ashfak_Portfolio/static/css/main.fd621915.css",
     "main.js": "/Mohomed_Ashfak_Portfolio/static/js/main.be6b7506.js",
     "index.html": "/Mohomed_Ashfak_Portfolio/index.html",
-    "main.fc13b510.css.map": "/Mohomed_Ashfak_Portfolio/static/css/main.fc13b510.css.map",
+    "main.fd621915.css.map": "/Mohomed_Ashfak_Portfolio/static/css/main.fd621915.css.map",
     "main.be6b7506.js.map": "/Mohomed_Ashfak_Portfolio/static/js/main.be6b7506.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc13b510.css",
+    "static/css/main.fd621915.css",
     "static/js/main.be6b7506.js"
   ]
 }
