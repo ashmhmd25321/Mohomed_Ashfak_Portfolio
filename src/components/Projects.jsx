@@ -1,317 +1,298 @@
-import React, { useState, useEffect } from 'react';
-import { ExternalLink, Github, Code, Database, Smartphone, Play, Star, Calendar, Users, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
-import { projects } from '../data/mock';
+import React, { useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { flagshipIds, projects } from "../data/mock";
+import { Reveal, SectionLabel } from "./system/Reveal";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "./ui/dialog";
 
-const Projects = () => {
-  const [currentImageIndex, setCurrentImageIndex] = useState({});
+function ProjectLinks({ project, className = "" }) {
+  return (
+    <div className={`flex flex-wrap gap-3 ${className}`}>
+      {project.demoUrl && (
+        <a
+          href={project.demoUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cursor="VISIT"
+          className="inline-flex items-center gap-2 rounded-full bg-ivory px-5 py-2.5 font-mono text-[11px] tracking-[0.16em] text-void"
+        >
+          Live demo <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
+      )}
+      {project.githubUrl && (
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cursor="VISIT"
+          className="inline-flex items-center gap-2 rounded-full border border-ivory/20 px-5 py-2.5 font-mono text-[11px] tracking-[0.16em] text-ivory"
+        >
+          GitHub <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
+      )}
+    </div>
+  );
+}
 
-  const getProjectScreenshots = (projectId) => {
-    if (projectId === 1) {
-      return [
-        "./images/skill-exchange-platform/feed page.png",
-        "./images/skill-exchange-platform/sessions page.png",
-        "./images/skill-exchange-platform/skill management page.png",
-        "./images/skill-exchange-platform/credits and payments.png",
-        "./images/skill-exchange-platform/admin dashboard.png",
-        "./images/skill-exchange-platform/login.png",
-        "./images/skill-exchange-platform/register.png",
-        "./images/skill-exchange-platform/chatbot.png",
-        "./images/skill-exchange-platform/topup credits.png"
-      ];
-    }
-    if (projectId === 2) {
-      return [
-        "./images/LearnHub/landing-page.png",
-        "./images/LearnHub/login.png",
-        "./images/LearnHub/register.png",
-        "./images/LearnHub/adminDashboard.png",
-        "./images/LearnHub/classes-view.png",
-        "./images/LearnHub/usermanage.png",
-        "./images/LearnHub/profile.png"
-      ];
-    }
-    if (projectId === 3) {
-      return [
-        "./images/PCMart/Screenshot 2025-10-15 at 20.01.20.png",
-        "./images/PCMart/Screenshot 2025-10-15 at 20.01.31.png",
-        "./images/PCMart/Screenshot 2025-10-15 at 20.01.46.png",
-        "./images/PCMart/Screenshot 2025-10-15 at 20.01.53.png",
-        "./images/PCMart/Screenshot 2025-10-15 at 20.02.03.png",
-        "./images/PCMart/Screenshot 2025-10-15 at 20.02.13.png"
-      ];
-    }
-    return [projects.find(p => p.id === projectId)?.image || ""];
-  };
-
-  const getProjectIcon = (tech) => {
-    if (tech.includes('React') || tech.includes('JavaScript')) return <Code className="h-5 w-5" />;
-    if (tech.includes('Spring') || tech.includes('Java')) return <Database className="h-5 w-5" />;
-    if (tech.includes('Flutter')) return <Smartphone className="h-5 w-5" />;
-    return <Code className="h-5 w-5" />;
-  };
-
-  const getProjectStats = (projectId) => {
-    if (projectId === 1) {
-      return [
-        { icon: <Users className="h-4 w-4" />, label: "Multi-user Platform", value: "100+" },
-        { icon: <Calendar className="h-4 w-4" />, label: "Sessions", value: "500+" },
-        { icon: <Zap className="h-4 w-4" />, label: "Real-time Chat", value: "Live" }
-      ];
-    }
-    if (projectId === 2) {
-      return [
-        { icon: <Users className="h-4 w-4" />, label: "Educational Platform", value: "Schools" },
-        { icon: <Calendar className="h-4 w-4" />, label: "Homework Management", value: "Active" },
-        { icon: <Star className="h-4 w-4" />, label: "Role-based Access", value: "Multi-tier" }
-      ];
-    }
-    if (projectId === 3) {
-      return [
-        { icon: <Code className="h-4 w-4" />, label: "E-commerce Platform", value: "PC Hardware" },
-        { icon: <Star className="h-4 w-4" />, label: "Product Categories", value: "50+" },
-        { icon: <Play className="h-4 w-4" />, label: "Payment Integration", value: "Secure" }
-      ];
-    }
-    return [
-      { icon: <Code className="h-4 w-4" />, label: "Technologies", value: "6+" },
-      { icon: <Star className="h-4 w-4" />, label: "Features", value: "10+" },
-      { icon: <Play className="h-4 w-4" />, label: "Live Demo", value: "✓" }
-    ];
-  };
-
-  const nextImage = (projectId) => {
-    const screenshots = getProjectScreenshots(projectId);
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [projectId]: ((prev[projectId] || 0) + 1) % screenshots.length
-    }));
-  };
-
-  const prevImage = (projectId) => {
-    const screenshots = getProjectScreenshots(projectId);
-    setCurrentImageIndex(prev => ({
-      ...prev,
-      [projectId]: ((prev[projectId] || 0) - 1 + screenshots.length) % screenshots.length
-    }));
-  };
-
-  // Auto-slide for projects with multiple images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prev => {
-        const newState = { ...prev };
-        
-        // Auto-slide for Skill Exchange Platform (project 1)
-        const screenshots1 = getProjectScreenshots(1);
-        if (screenshots1.length > 1) {
-          const currentIndex1 = prev[1] || 0;
-          newState[1] = (currentIndex1 + 1) % screenshots1.length;
-        }
-        
-        // Auto-slide for LearnHub (project 2)
-        const screenshots2 = getProjectScreenshots(2);
-        if (screenshots2.length > 1) {
-          const currentIndex2 = prev[2] || 0;
-          newState[2] = (currentIndex2 + 1) % screenshots2.length;
-        }
-        
-        // Auto-slide for PCMart (project 3)
-        const screenshots3 = getProjectScreenshots(3);
-        if (screenshots3.length > 1) {
-          const currentIndex3 = prev[3] || 0;
-          newState[3] = (currentIndex3 + 1) % screenshots3.length;
-        }
-        
-        return newState;
-      });
-    }, 4000); // Change image every 4 seconds
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Show all projects
-  const filteredProjects = projects;
+function Gallery({ shots, name }) {
+  const [index, setIndex] = useState(0);
+  const safe = shots?.length ? shots : [];
+  const total = safe.length;
+  if (!total) return null;
+  const go = (dir) => setIndex((i) => (i + dir + total) % total);
 
   return (
-        <section id="projects" className="py-12 sm:py-16 md:py-20 bg-gray-800 relative">
-          {/* Mixed Color Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-slate-700 to-gray-900"></div>
-          
-          {/* Additional color accent */}
-          <div className="absolute top-1/3 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-          
-          {/* Subtle red accent */}
-          <div className="absolute top-1/4 right-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-red-500/5 rounded-full blur-3xl"></div>
-          
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-              Featured <span className="text-red-500">Projects</span>
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto">
-              Here are some of the projects I've worked on that showcase my technical skills and problem-solving abilities.
-            </p>
-            <div className="w-24 h-1 bg-red-500 mx-auto rounded-full mt-4 sm:mt-6"></div>
-          </div>
+    <div className="relative overflow-hidden rounded-2xl border border-line bg-void-2">
+      <img
+        src={safe[index]}
+        alt={`${name} screen ${index + 1}`}
+        className="aspect-[16/10] w-full object-cover object-top"
+      />
+      {total > 1 && (
+        <>
+          <button
+            type="button"
+            aria-label="Previous screenshot"
+            onClick={() => go(-1)}
+            className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-void/70 text-ivory"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next screenshot"
+            onClick={() => go(1)}
+            className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-void/70 text-ivory"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </button>
+          <p className="absolute bottom-3 right-4 font-mono text-[10px] tracking-[0.18em] text-ivory/80">
+            {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+          </p>
+        </>
+      )}
+    </div>
+  );
+}
 
+export default function Projects() {
+  const [openId, setOpenId] = useState(null);
+  const active = projects.find((p) => p.id === openId);
+  const featured = flagshipIds
+    .map((id) => projects.find((p) => p.id === id))
+    .filter(Boolean);
+  const more = projects.filter((p) => !flagshipIds.includes(p.id));
 
-          {/* Projects Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredProjects.map((project, index) => {
-              const screenshots = getProjectScreenshots(project.id);
-              const currentIndex = currentImageIndex[project.id] || 0;
-              const isMultiImage = screenshots.length > 1;
-              
-              return (
-                <div
-                  key={project.id}
-                  className="bg-gray-900/50 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group border border-gray-700"
+  return (
+    <section id="work" className="relative py-24 md:py-32">
+      <div className="container-universe">
+        <Reveal>
+          <SectionLabel index="03">Selected work</SectionLabel>
+          <h2 className="display max-w-4xl text-4xl text-ivory md:text-6xl">
+            Three products
+            <br />
+            you can open.
+          </h2>
+          <p className="mt-6 max-w-2xl text-ivory-dim">
+            Flagships first — logistics, a skills marketplace, and a live farm
+            store. Everything else sits under more work.
+          </p>
+        </Reveal>
+      </div>
+
+      <div className="mt-16 space-y-28 md:space-y-40">
+        {featured.map((project, i) => (
+          <article key={project.id} className="relative">
+            <div className="container-universe grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+              <Reveal
+                className={`lg:col-span-7 ${i % 2 === 1 ? "lg:order-2" : ""}`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenId(project.id)}
+                  data-cursor="VIEW"
+                  className="group relative block w-full overflow-hidden rounded-[1.6rem] border border-line text-left"
                 >
-                  {/* Image Slider */}
-                  <div className="relative overflow-hidden h-40 sm:h-48">
-                    <img
-                      src={screenshots[currentIndex]}
-                      alt={`${project.name} - Screenshot ${currentIndex + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      onError={(e) => {
-                        console.log('Image failed to load:', e.target.src);
-                        e.target.src = project.image; // Fallback to original image
-                      }}
-                    />
-                    
-                    {/* Image Navigation */}
-                    {isMultiImage && (
-                      <>
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            prevImage(project.id);
-                          }}
-                          className="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 p-1.5 sm:p-2 bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/90 z-10"
-                        >
-                          <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
-                        </button>
-                        <button
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            nextImage(project.id);
-                          }}
-                          className="absolute right-1 sm:right-2 top-1/2 transform -translate-y-1/2 p-1.5 sm:p-2 bg-black/70 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/90 z-10"
-                        >
-                          <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
-                        </button>
-                        
-                        {/* Image indicators */}
-                        <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-                          {screenshots.map((_, imgIndex) => (
-                            <button
-                              key={imgIndex}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                setCurrentImageIndex(prev => ({
-                                  ...prev,
-                                  [project.id]: imgIndex
-                                }));
-                              }}
-                              className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-200 ${
-                                imgIndex === currentIndex ? 'bg-red-500' : 'bg-white/50 hover:bg-white/70'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </>
-                    )}
-                    
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  </div>
+                  <img
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    className="aspect-[16/10] w-full object-cover object-top transition duration-700 group-hover:scale-[1.04]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-void/70 via-void/10 to-transparent opacity-80 transition group-hover:opacity-90" />
+                  <span className="absolute bottom-5 left-5 font-mono text-[10px] tracking-[0.22em] text-ivory">
+                    OPEN CASE
+                  </span>
+                </button>
+              </Reveal>
 
-                  {/* Content */}
-                  <div className="p-4 sm:p-5">
-                    <div className="flex items-start justify-between mb-2 sm:mb-3">
-                      <h3 className="text-lg sm:text-xl font-bold text-white group-hover:text-red-400 transition-colors duration-300">
-                        {project.name}
-                      </h3>
-                      <div className="text-red-400">
-                        <div className="h-4 w-4 sm:h-5 sm:w-5">
-                          {getProjectIcon(project.technologies.join(' '))}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <p className="text-gray-300 leading-relaxed mb-3 sm:mb-4 text-xs sm:text-sm">
+              <Reveal
+                delay={80}
+                className={`lg:col-span-5 ${i % 2 === 1 ? "lg:order-1" : ""}`}
+              >
+                <p className="label-meta text-gold">
+                  Project {project.number} · {project.category}
+                </p>
+                <h3 className="display mt-4 text-4xl text-ivory md:text-5xl">
+                  {project.name}
+                </h3>
+                {project.subtitle && (
+                  <p className="mt-2 text-ivory-dim">{project.subtitle}</p>
+                )}
+                <p className="mt-6 text-lg leading-relaxed text-ivory-dim">
+                  {project.owned || project.description}
+                </p>
+                <p className="mt-4 font-mono text-[11px] tracking-[0.14em] uppercase text-ivory/50">
+                  {project.role}
+                </p>
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {project.technologies.slice(0, 5).map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-full border border-line px-3 py-1 font-mono text-[10px] tracking-[0.12em] text-ivory-dim"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(project.id)}
+                    data-cursor="OPEN"
+                    className="rounded-full border border-ivory/20 px-5 py-2.5 font-mono text-[11px] tracking-[0.16em] text-ivory"
+                  >
+                    Case study
+                  </button>
+                  <ProjectLinks project={project} />
+                </div>
+              </Reveal>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {more.length > 0 && (
+        <div className="container-universe mt-28 md:mt-36">
+          <Reveal>
+            <p className="label-meta text-gold">More work</p>
+            <h3 className="display mt-4 max-w-3xl text-3xl text-ivory md:text-4xl">
+              Sakura, LearnHub, PCMart, and the rest of what shipped.
+            </h3>
+          </Reveal>
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {more.map((project) => (
+              <Reveal key={project.id}>
+                <article className="glass-panel flex h-full flex-col overflow-hidden rounded-3xl">
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(project.id)}
+                    data-cursor="VIEW"
+                    className="block overflow-hidden text-left"
+                  >
+                    <img
+                      src={project.image}
+                      alt={`${project.name} preview`}
+                      className="aspect-[16/9] w-full object-cover object-top"
+                    />
+                  </button>
+                  <div className="flex flex-1 flex-col p-6">
+                    <p className="label-meta text-gold">
+                      {project.number} · {project.category}
+                    </p>
+                    <h4 className="display mt-3 text-2xl text-ivory">
+                      {project.name}
+                    </h4>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-ivory-dim">
                       {project.description}
                     </p>
-                    
-                    {/* Project Stats */}
-                    <div className="grid grid-cols-3 gap-1 sm:gap-2 mb-3 sm:mb-4">
-                      {getProjectStats(project.id).map((stat, statIndex) => (
-                        <div key={statIndex} className="text-center p-1.5 sm:p-2 bg-gray-800/50 rounded-lg">
-                          <div className="text-red-400 mb-1 flex justify-center">
-                            <div className="h-3 w-3 sm:h-4 sm:w-4">
-                              {stat.icon}
-                            </div>
-                          </div>
-                          <div className="text-white font-bold text-xs sm:text-sm">{stat.value}</div>
-                          <div className="text-gray-400 text-xs">{stat.label}</div>
-                        </div>
-                      ))}
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setOpenId(project.id)}
+                        data-cursor="OPEN"
+                        className="rounded-full border border-ivory/20 px-4 py-2 font-mono text-[10px] tracking-[0.16em] text-ivory"
+                      >
+                        Case study
+                      </button>
+                      <ProjectLinks project={project} />
                     </div>
-                    
-                    {/* Technologies */}
-                    <div className="flex flex-wrap gap-1 mb-3 sm:mb-4">
-                      {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-2 py-1 bg-red-500/20 text-red-400 rounded-full text-xs font-medium border border-red-500/30"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 3 && (
-                        <span className="px-2 py-1 bg-white/10 text-gray-300 rounded-full text-xs font-medium border border-white/20">
-                          +{project.technologies.length - 3}
-                        </span>
-                      )}
-                    </div>
-                    
-                    {/* Action Button */}
-                    <a
-                      href={project.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-red-500 text-white px-3 sm:px-4 py-2 rounded-lg font-medium hover:bg-red-600 transition-colors duration-200 text-center flex items-center justify-center gap-2 text-xs sm:text-sm"
-                    >
-                      <Play className="h-3 w-3 sm:h-4 sm:w-4" />
-                      Live Demo
-                    </a>
                   </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* View All Projects CTA */}
-          <div className="text-center mt-8 sm:mt-12">
-            <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base">
-              Want to see more of my work?
-            </p>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-red-500 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-medium hover:bg-red-600 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base"
-            >
-              <Play className="h-4 w-4 sm:h-5 sm:w-5" />
-              Get In Touch
-            </a>
+                </article>
+              </Reveal>
+            ))}
           </div>
         </div>
-      </div>
+      )}
+
+      <Dialog open={Boolean(active)} onOpenChange={(v) => !v && setOpenId(null)}>
+        <DialogContent className="max-h-[92vh] w-[min(960px,calc(100%-1.5rem))] overflow-y-auto border-line bg-void p-0 text-ivory sm:rounded-3xl [&>button]:right-4 [&>button]:top-4 [&>button]:flex [&>button]:h-10 [&>button]:w-10 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:border [&>button]:border-line [&>button]:bg-void/80 [&>button]:text-ivory [&>button]:opacity-100">
+          {active && (
+            <div className="relative">
+              <div className="p-5 pt-16 md:p-10 md:pt-16">
+                <p className="label-meta text-gold">
+                  {active.number} · {active.category}
+                </p>
+                <DialogTitle className="display mt-3 text-4xl md:text-5xl">
+                  {active.name}
+                </DialogTitle>
+                <DialogDescription className="mt-3 max-w-2xl text-base text-ivory-dim">
+                  {active.overview}
+                </DialogDescription>
+                {active.owned && (
+                  <p className="mt-4 max-w-2xl text-sm text-ivory">
+                    {active.owned}
+                  </p>
+                )}
+
+                <div className="mt-8">
+                  <Gallery shots={active.screenshots} name={active.name} />
+                </div>
+
+                <div className="mt-10 grid gap-10 md:grid-cols-2">
+                  <div>
+                    <p className="label-meta mb-3">Problem</p>
+                    <p className="text-ivory-dim">{active.problem}</p>
+                  </div>
+                  <div>
+                    <p className="label-meta mb-3">Solution</p>
+                    <p className="text-ivory-dim">{active.solution}</p>
+                  </div>
+                  <div>
+                    <p className="label-meta mb-3">Architecture</p>
+                    <p className="text-ivory-dim">{active.architecture}</p>
+                  </div>
+                  <div>
+                    <p className="label-meta mb-3">Focus</p>
+                    <ul className="space-y-1 text-ivory-dim">
+                      {active.focus.map((item) => (
+                        <li key={item}>— {item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-10 flex flex-wrap gap-2">
+                  {active.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-line px-3 py-1 font-mono text-[10px] tracking-[0.12em] text-ivory-dim"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <ProjectLinks project={active} className="mt-10" />
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
-};
-
-export default Projects;
+}

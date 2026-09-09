@@ -1,107 +1,64 @@
-import React from 'react';
-import { Code2, Database, Globe, Smartphone, Brain, Target, Users, Zap } from 'lucide-react';
-import { personalInfo } from '../data/mock';
+import React from "react";
+import { identityPanel, personalInfo, stats } from "../data/mock";
+import { Reveal, SectionLabel } from "./system/Reveal";
 
-const About = () => {
-  const highlights = [
-    {
-      icon: <Target className="h-8 w-8" />,
-      title: "Problem-Solving Focus",
-      description: "Driven by the challenge of solving complex problems and transforming ideas into user-friendly solutions."
-    },
-    {
-      icon: <Brain className="h-8 w-8" />,
-      title: "Machine Learning Solutions",
-      description: "Developing intelligent ML solutions that combine innovation with practical usability and real-world impact."
-    },
-    {
-      icon: <Globe className="h-8 w-8" />,
-      title: "Full-Stack Development",
-      description: "Building complete web applications with modern technologies, ensuring seamless user experiences."
-    },
-    {
-      icon: <Code2 className="h-8 w-8" />,
-      title: "Clean Architecture",
-      description: "Writing maintainable, scalable, and well-documented code following industry best practices."
-    }
-  ];
-
+export default function About() {
   return (
-        <section id="about" className="py-12 sm:py-16 md:py-20 bg-gray-800 relative">
-          {/* Mixed Color Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-slate-700 to-gray-900"></div>
-          
-          {/* Additional color accent */}
-          <div className="absolute top-1/3 left-1/4 w-32 h-32 sm:w-64 sm:h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
-          
-          {/* Subtle red accent */}
-          <div className="absolute top-1/4 right-1/4 w-48 h-48 sm:w-96 sm:h-96 bg-red-500/5 rounded-full blur-3xl"></div>
-          
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="max-w-4xl mx-auto">
-              {/* Section Header */}
-              <div className="text-center mb-12 sm:mb-16">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-                  About <span className="text-red-500">Me</span>
-                </h2>
-                <div className="w-24 h-1 bg-red-500 mx-auto rounded-full"></div>
-              </div>
+    <section id="about" className="relative py-28 md:py-36">
+      <div className="container-universe">
+        <Reveal>
+          <SectionLabel index="01">Identity</SectionLabel>
+          <h2 className="display max-w-5xl text-4xl leading-[1.05] text-ivory sm:text-5xl md:text-7xl">
+            The human behind
+            <br />
+            the system.
+          </h2>
+        </Reveal>
 
-              <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
-                {/* Left Column - Text Content */}
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="prose prose-lg text-gray-300">
-                    <p className="text-lg sm:text-xl leading-relaxed font-medium text-white">
-                      I'm a passionate developer driven by solving complex problems and transforming ideas into user-friendly, efficient digital solutions that make a real impact for users and businesses.
-                    </p>
-                    
-                    <p className="text-base sm:text-lg leading-relaxed text-gray-300">
-                      I focus on hands-on experimentation and continuous learning, ensuring code quality through clean architecture, proper testing, and industry best practices. My proudest achievements include developing intelligent machine learning solutions, full-stack web applications, and mobile apps that combine innovation with practical usability.
-                    </p>
-                  </div>
+        <div className="mt-16 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+          <Reveal className="space-y-6 text-lg leading-relaxed text-ivory-dim md:text-xl">
+            <p className="text-ivory">
+              I don't collect frameworks. I build products that have to survive
+              payments, roles, latency, and people clicking the wrong thing.
+            </p>
+            <p>
+              {personalInfo.longSummary}
+            </p>
+            <p>
+              The work I enjoy most sits where backends have to hold — logistics
+              sync, payments, production automation, and the product surfaces
+              that sit on top of them.
+            </p>
+          </Reveal>
 
-                  {/* Key Stats */}
-                  <div className="grid grid-cols-3 gap-3 sm:gap-6 py-6 sm:py-8 border-t border-gray-700">
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-red-500 mb-1 sm:mb-2">15+</div>
-                      <div className="text-gray-300 font-medium text-sm sm:text-base">Projects Delivered</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-red-500 mb-1 sm:mb-2">8+</div>
-                      <div className="text-gray-300 font-medium text-sm sm:text-base">Technologies</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-bold text-red-500 mb-1 sm:mb-2">3+</div>
-                      <div className="text-gray-300 font-medium text-sm sm:text-base">Years Experience</div>
-                    </div>
-                  </div>
+          <Reveal delay={120}>
+            <div className="glass-panel divide-y divide-line rounded-3xl">
+              {identityPanel.map((row) => (
+                <div
+                  key={row.label}
+                  className="flex items-baseline justify-between gap-6 px-6 py-5"
+                >
+                  <span className="label-meta">{row.label}</span>
+                  <span className="text-right text-ivory">{row.value}</span>
                 </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
 
-                {/* Right Column - Highlights */}
-                <div className="space-y-4 sm:space-y-6">
-                  {highlights.map((highlight, index) => (
-                    <div key={index} className="flex items-start gap-3 sm:gap-4 p-4 sm:p-6 bg-gray-900/50 rounded-xl hover:bg-red-500/10 transition-colors duration-300 group border border-gray-800">
-                      <div className="flex-shrink-0 p-2 sm:p-3 bg-gray-800 rounded-lg shadow-md group-hover:bg-red-500 group-hover:text-white transition-all duration-300 text-red-500">
-                        <div className="h-6 w-6 sm:h-8 sm:w-8">
-                          {highlight.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
-                          {highlight.title}
-                        </h3>
-                        <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
-                          {highlight.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-          </div>
+        <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line md:grid-cols-4">
+          {stats.map((stat, i) => (
+            <Reveal
+              key={stat.label}
+              delay={i * 80}
+              className="bg-void px-6 py-8"
+            >
+              <p className="display text-3xl text-ivory md:text-4xl">{stat.value}</p>
+              <p className="label-meta mt-3">{stat.label}</p>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
   );
-};
-
-export default About;
+}

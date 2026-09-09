@@ -1,127 +1,119 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Code, Home, User, Wrench, Briefcase, GraduationCap, BookOpen, Mail } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { navLinks, personalInfo } from "../data/mock";
+import { scrollToId, useActiveSection } from "../hooks/useActiveSection";
+import MagneticButton from "./system/MagneticButton";
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const SECTION_IDS = ["home", "about", "work", "experience", "skills", "contact"];
+
+export default function Header() {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const active = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
-
-      // Determine active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'projects', 'experience', 'education', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(sections[i]);
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { href: '#home', label: 'Home', icon: Home, id: 'home' },
-    { href: '#about', label: 'About', icon: User, id: 'about' },
-    { href: '#skills', label: 'Skills', icon: Wrench, id: 'skills' },
-    { href: '#projects', label: 'Projects', icon: Briefcase, id: 'projects' },
-    { href: '#experience', label: 'Experience', icon: Code, id: 'experience' },
-    { href: '#education', label: 'Education', icon: GraduationCap, id: 'education' },
-    { href: '#contact', label: 'Contact', icon: Mail, id: 'contact' }
-  ];
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+  const go = (href) => {
+    scrollToId(href);
+    setOpen(false);
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      scrolled ? 'bg-black/90 backdrop-blur-sm border-b border-gray-800' : 'bg-transparent'
-    }`}>
-      <nav className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="font-bold text-xl text-white">
-            <span className="gradient-text text-2xl">M</span>ohomed{' '}
-            <span className="gradient-text text-2xl">A</span>shfak
-          </div>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        className={`container-universe relative z-50 mt-4 flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 md:px-5 ${
+          scrolled || open
+            ? "glass-panel shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+            : "bg-transparent"
+        }`}
+      >
+        <button
+          onClick={() => go("#home")}
+          className="flex items-center pl-1"
+          data-cursor="HOME"
+          aria-label="Back to top"
+        >
+          <span className="wordmark text-[1.65rem] text-ivory md:text-[1.85rem]">
+            {personalInfo.firstName}
+          </span>
+        </button>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => {
-              const IconComponent = link.icon;
-              const isActive = activeSection === link.id;
-              return (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className={`flex items-center gap-2 px-4 py-2 transition-all duration-300 font-medium rounded-lg ${
-                    isActive
-                      ? 'text-red-400 bg-red-500/10 border border-red-500/30'
-                      : 'text-gray-300 hover:text-red-400 hover:bg-gray-800/50'
-                  }`}
-                >
-                  <IconComponent className="h-4 w-4" />
-                  <span>{link.label}</span>
-                </button>
-              );
-            })}
-          </div>
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          {navLinks.map((link) => (
+            <button
+              key={link.id}
+              onClick={() => go(link.href)}
+              data-cursor="hover"
+              className={`rounded-full px-3.5 py-1.5 font-mono text-[11px] tracking-[0.16em] uppercase transition-colors ${
+                active === link.id
+                  ? "text-ivory"
+                  : "text-ivory-dim hover:text-ivory"
+              }`}
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 text-gray-300 hover:text-red-400 transition-colors duration-300"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+        <div className="flex items-center gap-2">
+          <MagneticButton
+            as="button"
+            onClick={() => go("#contact")}
+            data-cursor="TALK"
+            className="btn-sweep hidden rounded-full bg-ivory px-4 py-2 font-mono text-[11px] tracking-[0.16em] text-void md:inline-flex"
           >
-            {isMenuOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            Hire me
+          </MagneticButton>
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ivory lg:hidden"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 bg-gray-900/95 backdrop-blur-sm rounded-lg border border-gray-800">
-            <div className="py-2">
-              {navLinks.map((link) => {
-                const IconComponent = link.icon;
-                const isActive = activeSection === link.id;
-                return (
-                  <button
-                    key={link.href}
-                    onClick={() => scrollToSection(link.href)}
-                    className={`flex items-center gap-3 w-full text-left px-4 py-3 transition-all duration-300 ${
-                      isActive
-                        ? 'text-red-400 bg-red-500/10 border-l-4 border-red-500'
-                        : 'text-gray-300 hover:text-red-400 hover:bg-gray-800/50'
-                    }`}
-                  >
-                    <IconComponent className="h-4 w-4" />
-                    <span className="font-medium">{link.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        )}
-      </nav>
+      {open && (
+        <div className="fixed inset-0 z-40 bg-void pt-24 lg:hidden">
+          <nav className="container-universe flex flex-col gap-2" aria-label="Mobile">
+            {navLinks.map((link, i) => (
+              <button
+                key={link.id}
+                onClick={() => go(link.href)}
+                className={`display border-b border-line py-4 text-left text-4xl ${
+                  active === link.id ? "text-ivory" : "text-ivory/40"
+                }`}
+                style={{ transitionDelay: `${i * 40}ms` }}
+              >
+                <span className="mr-4 font-mono text-xs text-ember">
+                  0{i + 1}
+                </span>
+                {link.label}
+              </button>
+            ))}
+            <button
+              onClick={() => go("#contact")}
+              className="mt-8 rounded-full bg-ivory py-4 font-mono text-xs tracking-[0.2em] text-void"
+            >
+              HIRE ME
+            </button>
+          </nav>
+        </div>
+      )}
     </header>
   );
-};
-
-export default Header;
+}
