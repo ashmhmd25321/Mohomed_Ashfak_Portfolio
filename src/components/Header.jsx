@@ -33,7 +33,7 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`container-universe relative z-50 mt-[max(0.65rem,env(safe-area-inset-top))] flex items-center justify-between rounded-full px-3 py-2 transition-all duration-500 sm:px-4 md:px-5 ${
+        className={`container-universe relative z-50 mt-[max(1rem,env(safe-area-inset-top))] flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 md:px-5 ${
           scrolled || open
             ? "glass-panel shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
             : "bg-transparent"
@@ -45,7 +45,7 @@ export default function Header() {
           data-cursor="HOME"
           aria-label="Back to top"
         >
-          <span className="wordmark text-[1.5rem] text-ivory md:text-[1.85rem]">
+          <span className="wordmark text-[1.65rem] text-ivory md:text-[1.85rem]">
             {personalInfo.firstName}
           </span>
         </button>
@@ -72,7 +72,7 @@ export default function Header() {
             as="button"
             onClick={() => go("#contact")}
             data-cursor="TALK"
-            className="btn-sweep hidden rounded-full bg-ivory px-4 py-2 font-mono text-[11px] tracking-[0.16em] text-void lg:inline-flex"
+            className="btn-sweep hidden rounded-full bg-ivory px-4 py-2 font-mono text-[11px] tracking-[0.16em] text-void md:inline-flex"
           >
             Hire me
           </MagneticButton>
