@@ -4,11 +4,11 @@ import { Reveal, SectionLabel } from "./system/Reveal";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-24 md:py-32">
+    <section id="experience" className="relative py-16 md:py-32">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="06">Journey</SectionLabel>
-          <h2 className="display max-w-4xl text-4xl text-ivory md:text-6xl">
+          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-6xl">
             Six chapters.
             <br />
             One through-line.
@@ -17,11 +17,11 @@ export default function Experience() {
 
         <div className="relative mt-16">
           <div
-            className="timeline-line absolute left-[11px] top-2 hidden h-[calc(100%-1rem)] w-px md:left-1/2 md:block md:-translate-x-1/2"
+            className="timeline-line absolute left-[11px] top-2 h-[calc(100%-1rem)] w-px md:left-1/2 md:-translate-x-1/2"
             aria-hidden="true"
           />
 
-          <ol className="space-y-12 md:space-y-0">
+          <ol className="space-y-10 md:space-y-0">
             {experience.map((exp, i) => (
               <li key={exp.id} className="relative md:grid md:grid-cols-2 md:gap-16">
                 <div
@@ -35,7 +35,7 @@ export default function Experience() {
                   }`}
                 >
                   <p className="label-meta text-gold">{exp.duration}</p>
-                  <h3 className="display mt-3 text-3xl text-ivory">{exp.position}</h3>
+                  <h3 className="display mt-3 text-2xl text-ivory md:text-3xl">{exp.position}</h3>
                   <p className="mt-1 text-ivory">{exp.company}</p>
                   <p className="mt-1 text-sm text-ivory-dim">{exp.location}</p>
                   <p className="mt-4 text-ivory-dim">{exp.description}</p>

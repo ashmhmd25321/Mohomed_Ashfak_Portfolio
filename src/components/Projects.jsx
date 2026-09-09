@@ -18,7 +18,7 @@ function ProjectLinks({ project, className = "" }) {
           target="_blank"
           rel="noopener noreferrer"
           data-cursor="VISIT"
-          className="inline-flex items-center gap-2 rounded-full bg-ivory px-5 py-2.5 font-mono text-[11px] tracking-[0.16em] text-void"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full bg-ivory px-4 py-2.5 font-mono text-[11px] tracking-[0.16em] text-void sm:px-5"
         >
           Live demo <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
@@ -29,7 +29,7 @@ function ProjectLinks({ project, className = "" }) {
           target="_blank"
           rel="noopener noreferrer"
           data-cursor="VISIT"
-          className="inline-flex items-center gap-2 rounded-full border border-ivory/20 px-5 py-2.5 font-mono text-[11px] tracking-[0.16em] text-ivory"
+          className="inline-flex min-h-11 items-center gap-2 rounded-full border border-ivory/20 px-4 py-2.5 font-mono text-[11px] tracking-[0.16em] text-ivory sm:px-5"
         >
           GitHub <ArrowUpRight className="h-3.5 w-3.5" />
         </a>
@@ -88,26 +88,26 @@ export default function Projects() {
   const more = projects.filter((p) => !flagshipIds.includes(p.id));
 
   return (
-    <section id="work" className="relative py-24 md:py-32">
+    <section id="work" className="relative py-16 md:py-32">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="03">Selected work</SectionLabel>
-          <h2 className="display max-w-4xl text-4xl text-ivory md:text-6xl">
+          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-6xl">
             Three products
             <br />
             you can open.
           </h2>
-          <p className="mt-6 max-w-2xl text-ivory-dim">
+          <p className="mt-5 max-w-2xl text-ivory-dim md:mt-6">
             Flagships first — logistics, a skills marketplace, and a live farm
             store. Everything else sits under more work.
           </p>
         </Reveal>
       </div>
 
-      <div className="mt-16 space-y-28 md:space-y-40">
+      <div className="mt-12 space-y-16 md:mt-16 md:space-y-40">
         {featured.map((project, i) => (
           <article key={project.id} className="relative">
-            <div className="container-universe grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="container-universe grid items-center gap-6 lg:grid-cols-12 lg:gap-14">
               <Reveal
                 className={`lg:col-span-7 ${i % 2 === 1 ? "lg:order-2" : ""}`}
               >
@@ -115,7 +115,7 @@ export default function Projects() {
                   type="button"
                   onClick={() => setOpenId(project.id)}
                   data-cursor="VIEW"
-                  className="group relative block w-full overflow-hidden rounded-[1.6rem] border border-line text-left"
+                  className="group relative block w-full overflow-hidden rounded-2xl border border-line text-left md:rounded-[1.6rem]"
                 >
                   <img
                     src={project.image}
@@ -137,13 +137,13 @@ export default function Projects() {
                 <p className="label-meta text-gold">
                   Project {project.number} · {project.category}
                 </p>
-                <h3 className="display mt-4 text-4xl text-ivory md:text-5xl">
+                <h3 className="display mt-3 text-3xl text-ivory md:mt-4 md:text-5xl">
                   {project.name}
                 </h3>
                 {project.subtitle && (
                   <p className="mt-2 text-ivory-dim">{project.subtitle}</p>
                 )}
-                <p className="mt-6 text-lg leading-relaxed text-ivory-dim">
+                <p className="mt-4 text-base leading-relaxed text-ivory-dim md:mt-6 md:text-lg">
                   {project.owned || project.description}
                 </p>
                 <p className="mt-4 font-mono text-[11px] tracking-[0.14em] uppercase text-ivory/50">
@@ -177,14 +177,14 @@ export default function Projects() {
       </div>
 
       {more.length > 0 && (
-        <div className="container-universe mt-28 md:mt-36">
+        <div className="container-universe mt-16 md:mt-36">
           <Reveal>
             <p className="label-meta text-gold">More work</p>
-            <h3 className="display mt-4 max-w-3xl text-3xl text-ivory md:text-4xl">
+            <h3 className="display mt-4 max-w-3xl text-2xl text-ivory md:text-4xl">
               Sakura, LearnHub, PCMart, and the rest of what shipped.
             </h3>
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-5 md:mt-12 md:grid-cols-2 md:gap-6">
             {more.map((project) => (
               <Reveal key={project.id}>
                 <article className="glass-panel flex h-full flex-col overflow-hidden rounded-3xl">
@@ -230,14 +230,14 @@ export default function Projects() {
       )}
 
       <Dialog open={Boolean(active)} onOpenChange={(v) => !v && setOpenId(null)}>
-        <DialogContent className="max-h-[92vh] w-[min(960px,calc(100%-1.5rem))] overflow-y-auto border-line bg-void p-0 text-ivory sm:rounded-3xl [&>button]:right-4 [&>button]:top-4 [&>button]:flex [&>button]:h-10 [&>button]:w-10 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:border [&>button]:border-line [&>button]:bg-void/80 [&>button]:text-ivory [&>button]:opacity-100">
+        <DialogContent className="max-h-[90dvh] w-[min(960px,calc(100%-1rem))] overflow-y-auto border-line bg-void p-0 text-ivory sm:rounded-3xl [&>button]:right-3 [&>button]:top-3 [&>button]:flex [&>button]:h-11 [&>button]:w-11 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:border [&>button]:border-line [&>button]:bg-void/80 [&>button]:text-ivory [&>button]:opacity-100">
           {active && (
             <div className="relative">
               <div className="p-5 pt-16 md:p-10 md:pt-16">
                 <p className="label-meta text-gold">
                   {active.number} · {active.category}
                 </p>
-                <DialogTitle className="display mt-3 text-4xl md:text-5xl">
+                <DialogTitle className="display mt-3 text-3xl md:text-5xl">
                   {active.name}
                 </DialogTitle>
                 <DialogDescription className="mt-3 max-w-2xl text-base text-ivory-dim">

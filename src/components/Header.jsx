@@ -33,7 +33,7 @@ export default function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div
-        className={`container-universe relative z-50 mt-4 flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 md:px-5 ${
+        className={`container-universe relative z-50 mt-[max(0.65rem,env(safe-area-inset-top))] flex items-center justify-between rounded-full px-3 py-2 transition-all duration-500 sm:px-4 md:px-5 ${
           scrolled || open
             ? "glass-panel shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
             : "bg-transparent"
@@ -45,7 +45,7 @@ export default function Header() {
           data-cursor="HOME"
           aria-label="Back to top"
         >
-          <span className="wordmark text-[1.65rem] text-ivory md:text-[1.85rem]">
+          <span className="wordmark text-[1.5rem] text-ivory md:text-[1.85rem]">
             {personalInfo.firstName}
           </span>
         </button>
@@ -72,12 +72,12 @@ export default function Header() {
             as="button"
             onClick={() => go("#contact")}
             data-cursor="TALK"
-            className="btn-sweep hidden rounded-full bg-ivory px-4 py-2 font-mono text-[11px] tracking-[0.16em] text-void md:inline-flex"
+            className="btn-sweep hidden rounded-full bg-ivory px-4 py-2 font-mono text-[11px] tracking-[0.16em] text-void lg:inline-flex"
           >
             Hire me
           </MagneticButton>
           <button
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ivory lg:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ivory lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -88,13 +88,13 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-40 bg-void pt-24 lg:hidden">
-          <nav className="container-universe flex flex-col gap-2" aria-label="Mobile">
+        <div className="fixed inset-0 z-40 overflow-y-auto bg-void pt-[5.75rem] pb-[calc(6rem+env(safe-area-inset-bottom))] lg:hidden">
+          <nav className="container-universe flex flex-col gap-1" aria-label="Mobile">
             {navLinks.map((link, i) => (
               <button
                 key={link.id}
                 onClick={() => go(link.href)}
-                className={`display border-b border-line py-4 text-left text-4xl ${
+                className={`display border-b border-line py-3.5 text-left text-3xl sm:text-4xl ${
                   active === link.id ? "text-ivory" : "text-ivory/40"
                 }`}
                 style={{ transitionDelay: `${i * 40}ms` }}
@@ -107,7 +107,7 @@ export default function Header() {
             ))}
             <button
               onClick={() => go("#contact")}
-              className="mt-8 rounded-full bg-ivory py-4 font-mono text-xs tracking-[0.2em] text-void"
+              className="mt-8 min-h-12 rounded-full bg-ivory py-4 font-mono text-xs tracking-[0.2em] text-void"
             >
               HIRE ME
             </button>

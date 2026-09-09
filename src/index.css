@@ -47,7 +47,9 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     background: var(--void);
+    overflow-x: clip;
   }
 
   body {
@@ -57,7 +59,8 @@
     font-family: Inter, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    overflow-x: clip;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 
   ::selection {
@@ -73,16 +76,29 @@
 
 @layer components {
   .container-universe {
-    width: min(1240px, calc(100% - 2.5rem));
+    width: min(1240px, calc(100% - 2.25rem));
     margin-inline: auto;
+  }
+
+  @media (min-width: 640px) {
+    .container-universe {
+      width: min(1240px, calc(100% - 2.5rem));
+    }
   }
 
   .label-meta {
     font-family: "JetBrains Mono", ui-monospace, monospace;
-    font-size: 0.6875rem;
-    letter-spacing: 0.22em;
+    font-size: 0.625rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--ivory-dim);
+  }
+
+  @media (min-width: 768px) {
+    .label-meta {
+      font-size: 0.6875rem;
+      letter-spacing: 0.22em;
+    }
   }
 
   .display {

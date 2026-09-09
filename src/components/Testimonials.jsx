@@ -4,24 +4,24 @@ import { Reveal, SectionLabel } from "./system/Reveal";
 
 export default function Testimonials() {
   return (
-    <section id="proof" className="relative py-24 md:py-32">
+    <section id="proof" className="relative py-16 md:py-32">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="04">From clients</SectionLabel>
-          <h2 className="display max-w-4xl text-4xl text-ivory md:text-6xl">
+          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-6xl">
             People who
             <br />
             shipped with me.
           </h2>
-          <p className="mt-6 max-w-2xl text-ivory-dim">
+          <p className="mt-5 max-w-2xl text-ivory-dim md:mt-6">
             Public notes from DreamWare clients — the work, not a pitch deck.
           </p>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:mt-16 md:grid-cols-3 md:gap-6">
           {testimonials.map((item, i) => (
             <Reveal key={item.name} delay={i * 80}>
-              <blockquote className="glass-panel flex h-full flex-col rounded-3xl p-7 md:p-8">
+              <blockquote className="glass-panel flex h-full flex-col rounded-3xl p-5 md:p-8">
                 <p className="flex-1 text-base leading-relaxed text-ivory-dim">
                   “{item.quote}”
                 </p>

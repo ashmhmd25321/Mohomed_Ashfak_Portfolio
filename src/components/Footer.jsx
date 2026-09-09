@@ -17,12 +17,12 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="border-t border-line py-12">
+    <footer className="border-t border-line pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-10 md:py-12">
       <div className="container-universe flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="display text-2xl text-ivory">{personalInfo.name}</p>
           <p className="mt-2 text-sm text-ivory-dim">{personalInfo.location}</p>
-          <p className="mt-6 max-w-sm text-sm text-ivory-faint">
+          <p className="mt-6 hidden max-w-sm text-sm text-ivory-faint md:block">
             Designed & engineered with curiosity. Press{" "}
             <kbd className="rounded border border-line px-1.5 py-0.5 font-mono text-[10px] text-ivory">
               G
