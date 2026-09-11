@@ -76,13 +76,13 @@
 
 @layer components {
   .container-universe {
-    width: min(1120px, calc(100% - 2rem));
+    width: min(1040px, calc(100% - 2rem));
     margin-inline: auto;
   }
 
   @media (min-width: 768px) {
     .container-universe {
-      width: min(1120px, calc(100% - 3rem));
+      width: min(1040px, calc(100% - 3rem));
     }
   }
 
@@ -341,7 +341,7 @@
 /* Orbit ring behind portrait */
 .orbit {
   position: absolute;
-  inset: -6% -8%;
+  inset: -2% -4%;
   border: 1px solid rgba(243, 238, 230, 0.08);
   border-radius: 999px;
   animation: spin 48s linear infinite;
@@ -360,7 +360,7 @@
   box-shadow: 0 0 16px var(--ember);
 }
 .orbit-slow {
-  inset: -18%;
+  inset: -12%;
   animation-duration: 72s;
   animation-direction: reverse;
   border-color: rgba(203, 180, 138, 0.12);
