@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
 import { personalInfo } from "../data/mock";
-import MagneticButton from "./system/MagneticButton";
 import { Reveal, SectionLabel } from "./system/Reveal";
 
 const channels = [
@@ -9,25 +8,21 @@ const channels = [
     label: "Email me",
     href: `mailto:${personalInfo.email}`,
     meta: personalInfo.email,
-    cursor: "WRITE",
   },
   {
     label: "LinkedIn",
     href: personalInfo.linkedin,
     meta: "Professional thread",
-    cursor: "VISIT",
   },
   {
     label: "GitHub",
     href: personalInfo.github,
     meta: "ashmhmd25321",
-    cursor: "VISIT",
   },
   {
     label: "WhatsApp",
     href: personalInfo.whatsapp,
     meta: personalInfo.phone,
-    cursor: "TALK",
   },
 ];
 
@@ -39,37 +34,33 @@ export default function Contact() {
 
       <div className="container-universe relative">
         <Reveal>
-          <SectionLabel index="08">Transmission</SectionLabel>
+          <SectionLabel index="08">Contact</SectionLabel>
           <h2 className="display max-w-4xl text-[2.35rem] leading-[0.95] text-ivory md:text-5xl">
             Have something
             <br />
             worth building?
           </h2>
           <p className="mt-6 max-w-xl text-base text-ivory-dim md:mt-8 md:text-lg">
-            {personalInfo.availability}. Email, WhatsApp, or LinkedIn — pick a
-            thread. I read everything.
+            {personalInfo.availability}. {personalInfo.capacity} Email,
+            WhatsApp, or LinkedIn — pick a thread.
           </p>
-          <MagneticButton
-            as="a"
+          <a
             href={personalInfo.cvUrl}
             download
-            data-cursor="CV"
             className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-line px-6 py-3 font-mono text-[11px] tracking-[0.18em] text-ivory hover:border-ivory/30 sm:w-auto md:mt-8"
           >
             Download CV
             <ArrowDownToLine className="h-4 w-4" />
-          </MagneticButton>
+          </a>
         </Reveal>
 
         <div className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 md:mt-10">
           {channels.map((ch, i) => (
             <Reveal key={ch.label} delay={i * 60}>
-              <MagneticButton
-                as="a"
+              <a
                 href={ch.href}
                 target={ch.href.startsWith("http") ? "_blank" : undefined}
                 rel={ch.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                data-cursor={ch.cursor}
                 className="group flex h-full min-h-24 items-end justify-between bg-void px-5 py-6 hover:bg-ivory/[0.03] sm:px-6 sm:py-8"
               >
                 <span>
@@ -81,7 +72,7 @@ export default function Contact() {
                   </span>
                 </span>
                 <ArrowUpRight className="h-6 w-6 text-ember transition group-hover:-translate-y-1 group-hover:translate-x-1" />
-              </MagneticButton>
+              </a>
             </Reveal>
           ))}
         </div>

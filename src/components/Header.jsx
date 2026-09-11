@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navLinks, personalInfo } from "../data/mock";
 import { scrollToId, useActiveSection } from "../hooks/useActiveSection";
-import MagneticButton from "./system/MagneticButton";
 
 const SECTION_IDS = ["home", "about", "work", "experience", "skills", "contact"];
 
@@ -44,7 +43,6 @@ export default function Header() {
         <button
           onClick={() => go("#home")}
           className="flex items-center"
-          data-cursor="HOME"
           aria-label="Back to top"
         >
           <span className="wordmark text-[1.55rem] text-ivory md:text-[1.75rem]">
@@ -57,7 +55,6 @@ export default function Header() {
             <button
               key={link.id}
               onClick={() => go(link.href)}
-              data-cursor="hover"
               className={`rounded-full px-3 py-1.5 font-mono text-[11px] tracking-[0.16em] uppercase transition-colors ${
                 active === link.id
                   ? "text-ivory"
@@ -70,14 +67,13 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <MagneticButton
-            as="button"
+          <button
+            type="button"
             onClick={() => go("#contact")}
-            data-cursor="TALK"
             className="btn-sweep hidden rounded-full bg-ivory px-4 py-2 font-mono text-[11px] tracking-[0.16em] text-void md:inline-flex"
           >
             Hire me
-          </MagneticButton>
+          </button>
           <button
             className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ivory lg:hidden"
             onClick={() => setOpen((v) => !v)}

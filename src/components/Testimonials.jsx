@@ -14,7 +14,7 @@ export default function Testimonials() {
             shipped with me.
           </h2>
           <p className="mt-5 max-w-2xl text-ivory-dim md:mt-6">
-            Public notes from DreamWare clients — the work, not a pitch deck.
+            Notes from people I shipped with — the work, not a pitch deck.
           </p>
         </Reveal>
 
@@ -28,9 +28,11 @@ export default function Testimonials() {
                 <footer className="mt-8">
                   <cite className="not-italic">
                     <span className="block font-medium text-ivory">{item.name}</span>
-                    <span className="mt-1 block font-mono text-[10px] tracking-[0.16em] uppercase text-ivory/45">
-                      {item.role}
-                    </span>
+                    {item.role && (
+                      <span className="mt-1 block font-mono text-[10px] tracking-[0.16em] uppercase text-ivory/45">
+                        {item.role}
+                      </span>
+                    )}
                   </cite>
                 </footer>
               </blockquote>

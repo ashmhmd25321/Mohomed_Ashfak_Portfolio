@@ -1,8 +1,6 @@
 import React from "react";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { personalInfo } from "../data/mock";
-import UniverseCanvas from "./system/UniverseCanvas";
-import MagneticButton from "./system/MagneticButton";
 import { scrollToId } from "../hooks/useActiveSection";
 
 export default function Hero() {
@@ -11,7 +9,6 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-[100svh] overflow-x-clip overflow-y-visible lg:overflow-hidden"
     >
-      <UniverseCanvas />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />
       <div className="pointer-events-none absolute right-[10%] bottom-[6%] h-[34rem] w-[34rem] rounded-full bg-ember/[0.11] blur-[120px]" />
 
@@ -30,23 +27,21 @@ export default function Hero() {
             {personalInfo.heroPitch}
           </p>
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <MagneticButton
-              as="button"
+            <button
+              type="button"
               onClick={() => scrollToId("work")}
-              data-cursor="WORK"
               className="btn-sweep inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-ivory px-6 py-3 font-mono text-[11px] tracking-[0.18em] text-void max-sm:w-full"
             >
               See live work
               <ArrowDownRight className="h-4 w-4" />
-            </MagneticButton>
-            <MagneticButton
-              as="button"
+            </button>
+            <button
+              type="button"
               onClick={() => scrollToId("contact")}
-              data-cursor="HIRE"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-ivory/55 bg-ivory/[0.03] px-6 py-3 font-mono text-[11px] tracking-[0.18em] text-ivory hover:border-ivory max-sm:w-full"
             >
               Hire me
-            </MagneticButton>
+            </button>
           </div>
         </div>
 
@@ -58,7 +53,7 @@ export default function Hero() {
             <img
               src={personalInfo.profileImage}
               alt={`${personalInfo.name}, illustrated standee`}
-              className="portrait-art standee-figure relative z-[2] mx-auto h-auto w-full max-h-[min(38vh,280px)] object-contain object-bottom drop-shadow-[0_28px_40px_rgba(0,0,0,0.55)] lg:max-h-[min(72vh,640px)]"
+              className="relative z-[2] mx-auto h-auto w-full max-h-[min(38vh,280px)] object-contain object-bottom drop-shadow-[0_28px_40px_rgba(0,0,0,0.55)] lg:max-h-[min(72vh,640px)]"
             />
             <div className="standee-shadow" aria-hidden="true" />
           </div>
@@ -67,13 +62,15 @@ export default function Hero() {
             <p className="mt-1 text-sm leading-snug text-ivory">
               {personalInfo.currentRole}
             </p>
+            <p className="mt-1 text-xs leading-snug text-ivory-dim">
+              Full-time remote · Scroll part-time
+            </p>
             <p className="mt-1 flex flex-wrap items-center gap-x-3 text-xs leading-snug text-ivory-dim">
-              <span>Replies within a day · Remote AU / NZ / KW</span>
+              <span>Sri Lanka · UTC+5:30 · replies within a day</span>
               <a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-cursor="VISIT"
                 className="inline-flex items-center gap-1 font-mono text-[10px] tracking-[0.16em] text-ivory"
               >
                 GITHUB <ArrowUpRight className="h-3.5 w-3.5" />

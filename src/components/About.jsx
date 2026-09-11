@@ -24,6 +24,8 @@ export default function About() {
             <p>
               {personalInfo.longSummary}
             </p>
+            <p>{personalInfo.workBase}</p>
+            <p>{personalInfo.capacity}</p>
             <p>
               The work I enjoy most sits where backends have to hold — logistics
               sync, payments, production automation, and the product surfaces

@@ -1,13 +1,7 @@
-import React, { useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { flagshipIds, projects } from "../data/mock";
 import { Reveal, SectionLabel } from "./system/Reveal";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "./ui/dialog";
 
 function ProjectLinks({ project, className = "" }) {
   return (
@@ -17,7 +11,6 @@ function ProjectLinks({ project, className = "" }) {
           href={project.demoUrl}
           target="_blank"
           rel="noopener noreferrer"
-          data-cursor="VISIT"
           className="inline-flex min-h-11 items-center gap-2 rounded-full bg-ivory px-4 py-2.5 font-mono text-[11px] tracking-[0.16em] text-void sm:px-5"
         >
           Live demo <ArrowUpRight className="h-3.5 w-3.5" />
@@ -28,7 +21,6 @@ function ProjectLinks({ project, className = "" }) {
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          data-cursor="VISIT"
           className="inline-flex min-h-11 items-center gap-2 rounded-full border border-ivory/20 px-4 py-2.5 font-mono text-[11px] tracking-[0.16em] text-ivory sm:px-5"
         >
           GitHub <ArrowUpRight className="h-3.5 w-3.5" />
@@ -79,6 +71,100 @@ function Gallery({ shots, name }) {
   );
 }
 
+function CaseStudy({ project, onClose }) {
+  useEffect(() => {
+    if (!project) return undefined;
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previous;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [project, onClose]);
+
+  if (!project) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto p-3 sm:p-6">
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/80"
+        aria-label="Close case study"
+        onClick={onClose}
+      />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="case-study-title"
+        className="relative my-4 w-[min(960px,100%)] rounded-3xl border border-line bg-void text-ivory"
+      >
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-3 top-3 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-void/80 text-ivory"
+          aria-label="Close"
+        >
+          <X className="h-4 w-4" />
+        </button>
+        <div className="p-5 pt-16 md:p-10 md:pt-16">
+          <p className="label-meta text-gold">
+            {project.number} · {project.category}
+          </p>
+          <h2 id="case-study-title" className="display mt-3 text-3xl md:text-5xl">
+            {project.name}
+          </h2>
+          <p className="mt-3 max-w-2xl text-base text-ivory-dim">
+            {project.overview}
+          </p>
+          {project.owned && (
+            <p className="mt-4 max-w-2xl text-sm text-ivory">{project.owned}</p>
+          )}
+          <div className="mt-8">
+            <Gallery shots={project.screenshots} name={project.name} />
+          </div>
+          <div className="mt-10 grid gap-10 md:grid-cols-2">
+            <div>
+              <p className="label-meta mb-3">Problem</p>
+              <p className="text-ivory-dim">{project.problem}</p>
+            </div>
+            <div>
+              <p className="label-meta mb-3">Solution</p>
+              <p className="text-ivory-dim">{project.solution}</p>
+            </div>
+            <div>
+              <p className="label-meta mb-3">Architecture</p>
+              <p className="text-ivory-dim">{project.architecture}</p>
+            </div>
+            <div>
+              <p className="label-meta mb-3">Focus</p>
+              <ul className="space-y-1 text-ivory-dim">
+                {project.focus.map((item) => (
+                  <li key={item}>— {item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-10 flex flex-wrap gap-2">
+            {project.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-line px-3 py-1 font-mono text-[10px] tracking-[0.12em] text-ivory-dim"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+          <ProjectLinks project={project} className="mt-10" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Projects() {
   const [openId, setOpenId] = useState(null);
   const active = projects.find((p) => p.id === openId);
@@ -114,7 +200,6 @@ export default function Projects() {
                 <button
                   type="button"
                   onClick={() => setOpenId(project.id)}
-                  data-cursor="VIEW"
                   className="group relative block w-full overflow-hidden rounded-2xl border border-line text-left md:rounded-[1.6rem]"
                 >
                   <img
@@ -163,7 +248,6 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={() => setOpenId(project.id)}
-                    data-cursor="OPEN"
                     className="rounded-full border border-ivory/20 px-5 py-2.5 font-mono text-[11px] tracking-[0.16em] text-ivory"
                   >
                     Case study
@@ -191,7 +275,6 @@ export default function Projects() {
                   <button
                     type="button"
                     onClick={() => setOpenId(project.id)}
-                    data-cursor="VIEW"
                     className="block overflow-hidden text-left"
                   >
                     <img
@@ -214,7 +297,6 @@ export default function Projects() {
                       <button
                         type="button"
                         onClick={() => setOpenId(project.id)}
-                        data-cursor="OPEN"
                         className="rounded-full border border-ivory/20 px-4 py-2 font-mono text-[10px] tracking-[0.16em] text-ivory"
                       >
                         Case study
@@ -229,70 +311,7 @@ export default function Projects() {
         </div>
       )}
 
-      <Dialog open={Boolean(active)} onOpenChange={(v) => !v && setOpenId(null)}>
-        <DialogContent className="max-h-[90dvh] w-[min(960px,calc(100%-1rem))] overflow-y-auto border-line bg-void p-0 text-ivory sm:rounded-3xl [&>button]:right-3 [&>button]:top-3 [&>button]:flex [&>button]:h-11 [&>button]:w-11 [&>button]:items-center [&>button]:justify-center [&>button]:rounded-full [&>button]:border [&>button]:border-line [&>button]:bg-void/80 [&>button]:text-ivory [&>button]:opacity-100">
-          {active && (
-            <div className="relative">
-              <div className="p-5 pt-16 md:p-10 md:pt-16">
-                <p className="label-meta text-gold">
-                  {active.number} · {active.category}
-                </p>
-                <DialogTitle className="display mt-3 text-3xl md:text-5xl">
-                  {active.name}
-                </DialogTitle>
-                <DialogDescription className="mt-3 max-w-2xl text-base text-ivory-dim">
-                  {active.overview}
-                </DialogDescription>
-                {active.owned && (
-                  <p className="mt-4 max-w-2xl text-sm text-ivory">
-                    {active.owned}
-                  </p>
-                )}
-
-                <div className="mt-8">
-                  <Gallery shots={active.screenshots} name={active.name} />
-                </div>
-
-                <div className="mt-10 grid gap-10 md:grid-cols-2">
-                  <div>
-                    <p className="label-meta mb-3">Problem</p>
-                    <p className="text-ivory-dim">{active.problem}</p>
-                  </div>
-                  <div>
-                    <p className="label-meta mb-3">Solution</p>
-                    <p className="text-ivory-dim">{active.solution}</p>
-                  </div>
-                  <div>
-                    <p className="label-meta mb-3">Architecture</p>
-                    <p className="text-ivory-dim">{active.architecture}</p>
-                  </div>
-                  <div>
-                    <p className="label-meta mb-3">Focus</p>
-                    <ul className="space-y-1 text-ivory-dim">
-                      {active.focus.map((item) => (
-                        <li key={item}>— {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="mt-10 flex flex-wrap gap-2">
-                  {active.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="rounded-full border border-line px-3 py-1 font-mono text-[10px] tracking-[0.12em] text-ivory-dim"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <ProjectLinks project={active} className="mt-10" />
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <CaseStudy project={active} onClose={() => setOpenId(null)} />
     </section>
   );
 }

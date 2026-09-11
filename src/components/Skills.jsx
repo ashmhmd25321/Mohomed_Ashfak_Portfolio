@@ -63,7 +63,6 @@ export default function Skills() {
                         key={tech}
                         type="button"
                         onClick={() => setActive(tech)}
-                        data-cursor="hover"
                         className={`min-h-11 rounded-full border px-3.5 py-2 text-[13px] transition md:px-4 md:text-sm ${
                           on
                             ? "border-ember/50 bg-ember/10 text-ivory"

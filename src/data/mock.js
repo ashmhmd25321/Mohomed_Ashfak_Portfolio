@@ -19,14 +19,18 @@ export const personalInfo = {
   summary:
     "I build backend services, full-stack applications, and production web automation — Python, Java, PHP, Laravel, Spring Boot, and AWS — with a bias toward reliable features and systems teams can actually run.",
   longSummary:
-    "Software engineer with 5+ years of experience building backend services, full-stack applications, and production web automation. Strong in Python, Java, PHP, REST APIs, Laravel, Spring Boot, Selenium, Playwright, Shopify integrations, and AWS (EC2, S3). Known for shipping reliable features, fixing production issues, writing maintainable automation, and working independently with remote product, vendor, and operations teams.",
+    "Software engineer since 2021, building backend services, full-stack applications, and production web automation. Strong in Python, Java, PHP, REST APIs, Laravel, Spring Boot, Selenium, Playwright, Shopify integrations, and AWS (EC2, S3). Known for shipping reliable features, fixing production issues, writing maintainable automation, and working independently with remote product, vendor, and operations teams.",
   profileImage: asset("./images/ashfak-standee-waist.png"),
   currentRole: "Web Automation Engineer, Elysion BPO",
   focus: "Backend · Full-stack · Web automation",
   availability: "Usually replies within a day · Remote with AU / NZ / KW teams",
+  workBase:
+    "I live in Kurunegala, Sri Lanka (UTC+5:30) and work remotely with Australia, New Zealand, and Kuwait teams from here — Sri Lankan citizen, no relocation required.",
+  capacity:
+    "Elysion BPO is the full-time role. Scroll is a part-time backend retainer. I am not running a third concurrent job.",
   cvUrl: asset("./Mohomed_Ashfak_CV.pdf"),
   heroPitch:
-    "5+ years shipping backends, full-stack products, and production web automation — Shopify into logistics, Playwright in production, live sites in Australia and Kuwait.",
+    "Since 2021 I have shipped backends, full-stack products, and production web automation — Shopify into logistics, Playwright in production, live sites in Australia and Kuwait.",
 };
 
 export const flagshipIds = [1, 8, 3];
@@ -34,29 +38,26 @@ export const flagshipIds = [1, 8, 3];
 export const testimonials = [
   {
     name: "Miyuru Bhashitha",
-    role: "Client",
     quote:
-      "Highly recommended. They have done our project very well and the prices are very reasonable. During the project period they implemented all the new recommendations we mentioned.",
+      "Highly recommended. Ashfak did our project very well and the prices were reasonable. During the project he implemented every new recommendation we mentioned.",
   },
   {
     name: "Pansilu Perera",
-    role: "Client",
     quote:
-      "They helped with a project I was stuck on for months. They contacted me often, gave me updates, got my feedback and made sure my task was properly completed.",
+      "Ashfak helped with a project I was stuck on for months. He contacted me often, gave me updates, got my feedback, and made sure the task was properly completed.",
   },
   {
     name: "Naveen Lankesha",
-    role: "Client",
     quote:
-      "Highly recommended. We had the opportunity to complete two projects with them, and both were delivered with exceptional quality and professionalism.",
+      "Highly recommended. We completed two projects with Ashfak, and both were delivered with exceptional quality and professionalism.",
   },
 ];
 
 export const identityPanel = [
   { label: "Role", value: "Software Engineer" },
   { label: "Focus", value: "Backend / Full-stack / Automation" },
-  { label: "Location", value: "Kurunegala, Sri Lanka" },
-  { label: "Now", value: "Elysion BPO · Scroll" },
+  { label: "Based", value: "Kurunegala, Sri Lanka · UTC+5:30" },
+  { label: "Now", value: "Elysion BPO (full-time) · Scroll (part-time)" },
 ];
 
 export const skills = [
@@ -707,9 +708,9 @@ export const experience = [
     description:
       "Web and mobile products on Angular, Spring Boot, Flutter, and Firebase.",
     achievements: [
-      "Developed and maintained web and mobile applications with Angular, Spring Boot, Flutter, and Firebase, improving performance and cross-platform compatibility",
-      "Implemented REST APIs and real-time data features for e-commerce and service platforms, improving system responsiveness and user experience",
-      "Integrated machine learning models for personalized recommendations and prediction features that supported more data-driven product decisions",
+      "Shipped and maintained web and mobile applications on Angular, Spring Boot, Flutter, and Firebase",
+      "Built REST APIs and real-time data features for e-commerce and service platforms",
+      "Integrated machine learning models for recommendations and prediction features on those products",
     ],
   },
   {
@@ -738,21 +739,21 @@ export const experience = [
       "REST APIs for an Angular frontend, and mobile applications with deep-learning features.",
     achievements: [
       "Built REST APIs for real-time data exchange with an Angular frontend and improved response speed by 40% through optimized query handling",
-      "Developed and deployed mobile applications with deep learning features for richer user experiences",
+      "Developed and deployed mobile applications that used deep-learning features",
     ],
   },
   {
     id: 6,
     company: "Independent",
     position: "Freelance Software Developer",
-    duration: "10/2021 — Present",
+    duration: "10/2021 — 2025",
     location: "Remote",
-    technologies: ["Full-stack", "Mobile", "Machine Learning"],
+    technologies: ["React", "Node.js", "PHP", "Flutter"],
     description:
-      "End-to-end web and mobile applications, plus machine-learning work, for clients under tight deadlines.",
+      "Project work alongside employment — web and mobile applications delivered end to end.",
     achievements: [
-      "Delivered end-to-end web and mobile applications, covering frontend interfaces, backend services, and client communication",
-      "Built machine learning models for data analysis, pattern recognition, and intelligent automation under tight deadlines",
+      "Delivered web and mobile applications end to end — UI, backend services, and client communication",
+      "Built machine learning models for analysis, pattern recognition, and automation on those projects",
     ],
   },
 ];
@@ -830,7 +831,7 @@ export const processSteps = [
 ];
 
 export const stats = [
-  { label: "Building since", value: "2021" },
+  { label: "Since", value: "2021" },
   { label: "Live products", value: "07" },
   { label: "Professional chapters", value: "06" },
   { label: "Disciplines", value: "Backend · Automation" },
