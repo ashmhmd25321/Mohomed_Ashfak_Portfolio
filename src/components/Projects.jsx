@@ -92,7 +92,7 @@ export default function Projects() {
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="03">Selected work</SectionLabel>
-          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-6xl">
+          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-5xl">
             Three products
             <br />
             you can open.

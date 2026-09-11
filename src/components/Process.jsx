@@ -8,7 +8,7 @@ export default function Process() {
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="02">How I think</SectionLabel>
-          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-6xl">
+          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-5xl">
             I don't just write code.
             <br />
             <span className="text-ivory/40">I solve for the system.</span>

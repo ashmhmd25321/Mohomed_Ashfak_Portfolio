@@ -40,7 +40,7 @@ export default function Contact() {
       <div className="container-universe relative">
         <Reveal>
           <SectionLabel index="08">Transmission</SectionLabel>
-          <h2 className="display max-w-5xl text-[2.35rem] leading-[0.95] text-ivory sm:text-6xl md:text-8xl">
+          <h2 className="display max-w-4xl text-[2.35rem] leading-[0.95] text-ivory md:text-5xl">
             Have something
             <br />
             worth building?

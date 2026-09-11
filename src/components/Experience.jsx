@@ -8,7 +8,7 @@ export default function Experience() {
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="06">Journey</SectionLabel>
-          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-6xl">
+          <h2 className="display max-w-4xl text-[2rem] text-ivory md:text-5xl">
             Six chapters.
             <br />
             One through-line.

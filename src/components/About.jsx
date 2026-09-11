@@ -8,7 +8,7 @@ export default function About() {
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="01">Identity</SectionLabel>
-          <h2 className="display max-w-5xl text-[2rem] leading-[1.08] text-ivory sm:text-5xl md:text-7xl">
+          <h2 className="display max-w-4xl text-[2rem] leading-[1.08] text-ivory md:text-5xl">
             The human behind
             <br />
             the system.

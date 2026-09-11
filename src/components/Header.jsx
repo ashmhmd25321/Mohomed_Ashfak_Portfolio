@@ -12,7 +12,7 @@ export default function Header() {
   const active = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -31,32 +31,34 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <div
-        className={`container-universe relative z-50 mt-[max(1rem,env(safe-area-inset-top))] flex items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 md:px-5 ${
-          scrolled || open
-            ? "glass-panel shadow-[0_10px_40px_rgba(0,0,0,0.35)]"
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        open
+          ? "border-b border-line bg-void"
+          : scrolled
+            ? "border-b border-line bg-void/80 backdrop-blur-xl"
             : "bg-transparent"
-        }`}
-      >
+      }`}
+    >
+      <div className="container-universe flex h-16 items-center justify-between md:h-[4.25rem]">
         <button
           onClick={() => go("#home")}
-          className="flex items-center pl-1"
+          className="flex items-center"
           data-cursor="HOME"
           aria-label="Back to top"
         >
-          <span className="wordmark text-[1.65rem] text-ivory md:text-[1.85rem]">
+          <span className="wordmark text-[1.55rem] text-ivory md:text-[1.75rem]">
             {personalInfo.firstName}
           </span>
         </button>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Primary">
           {navLinks.map((link) => (
             <button
               key={link.id}
               onClick={() => go(link.href)}
               data-cursor="hover"
-              className={`rounded-full px-3.5 py-1.5 font-mono text-[11px] tracking-[0.16em] uppercase transition-colors ${
+              className={`rounded-full px-3 py-1.5 font-mono text-[11px] tracking-[0.16em] uppercase transition-colors ${
                 active === link.id
                   ? "text-ivory"
                   : "text-ivory-dim hover:text-ivory"
@@ -77,7 +79,7 @@ export default function Header() {
             Hire me
           </MagneticButton>
           <button
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-line text-ivory lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ivory lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
@@ -88,13 +90,13 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="fixed inset-0 z-40 overflow-y-auto bg-void pt-[5.75rem] pb-[calc(6rem+env(safe-area-inset-bottom))] lg:hidden">
-          <nav className="container-universe flex flex-col gap-1" aria-label="Mobile">
+        <div className="fixed inset-0 top-16 z-40 overflow-y-auto bg-void pb-[calc(6rem+env(safe-area-inset-bottom))] lg:hidden">
+          <nav className="container-universe flex flex-col gap-1 pt-4" aria-label="Mobile">
             {navLinks.map((link, i) => (
               <button
                 key={link.id}
                 onClick={() => go(link.href)}
-                className={`display border-b border-line py-3.5 text-left text-3xl sm:text-4xl ${
+                className={`display border-b border-line py-3.5 text-left text-3xl ${
                   active === link.id ? "text-ivory" : "text-ivory/40"
                 }`}
                 style={{ transitionDelay: `${i * 40}ms` }}
