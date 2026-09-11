@@ -4,7 +4,7 @@ import { Reveal, SectionLabel } from "./system/Reveal";
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-16 md:py-32">
+    <section id="experience" className="relative section-pad">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="06">Journey</SectionLabel>
@@ -15,7 +15,7 @@ export default function Experience() {
           </h2>
         </Reveal>
 
-        <div className="relative mt-16">
+        <div className="relative mt-8 md:mt-10">
           <div
             className="timeline-line absolute left-[11px] top-2 h-[calc(100%-1rem)] w-px md:left-1/2 md:-translate-x-1/2"
             aria-hidden="true"

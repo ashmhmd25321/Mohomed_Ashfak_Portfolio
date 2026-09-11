@@ -33,7 +33,7 @@ const channels = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden py-16 md:py-40">
+    <section id="contact" className="relative overflow-hidden section-pad">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent" />
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[50vw] w-[50vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember/[0.08] blur-[140px]" />
 
@@ -61,7 +61,7 @@ export default function Contact() {
           </MagneticButton>
         </Reveal>
 
-        <div className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 md:mt-16">
+        <div className="mt-10 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 md:mt-10">
           {channels.map((ch, i) => (
             <Reveal key={ch.label} delay={i * 60}>
               <MagneticButton

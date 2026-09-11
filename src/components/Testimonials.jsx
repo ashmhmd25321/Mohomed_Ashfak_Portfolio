@@ -4,7 +4,7 @@ import { Reveal, SectionLabel } from "./system/Reveal";
 
 export default function Testimonials() {
   return (
-    <section id="proof" className="relative py-16 md:py-32">
+    <section id="proof" className="relative section-pad">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="04">From clients</SectionLabel>
@@ -18,7 +18,7 @@ export default function Testimonials() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-5 md:mt-16 md:grid-cols-3 md:gap-6">
+        <div className="mt-8 grid gap-5 md:mt-10 md:grid-cols-3 md:gap-6">
           {testimonials.map((item, i) => (
             <Reveal key={item.name} delay={i * 80}>
               <blockquote className="glass-panel flex h-full flex-col rounded-3xl p-5 md:p-8">

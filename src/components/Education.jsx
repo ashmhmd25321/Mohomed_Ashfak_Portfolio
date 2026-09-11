@@ -4,7 +4,7 @@ import { Reveal, SectionLabel } from "./system/Reveal";
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-16 md:py-28">
+    <section id="education" className="relative section-pad">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="07">Formation</SectionLabel>
@@ -13,7 +13,7 @@ export default function Education() {
           </h2>
         </Reveal>
 
-        <div className="mt-12 divide-y divide-line border-y border-line">
+        <div className="mt-8 divide-y divide-line border-y border-line">
           {education.map((edu, i) => (
             <Reveal
               key={edu.id}

@@ -4,7 +4,7 @@ import { Reveal, SectionLabel } from "./system/Reveal";
 
 export default function Process() {
   return (
-    <section id="process" className="relative py-16 md:py-28">
+    <section id="process" className="relative section-pad">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="02">How I think</SectionLabel>
@@ -15,7 +15,7 @@ export default function Process() {
           </h2>
         </Reveal>
 
-        <ol className="mt-10 divide-y divide-line border-y border-line md:mt-16">
+        <ol className="mt-8 divide-y divide-line border-y border-line md:mt-10">
           {processSteps.map((step, i) => (
             <Reveal as="li" key={step.id} delay={i * 40}>
               <article className="group grid gap-3 py-6 md:grid-cols-[140px_1fr_1.2fr] md:items-baseline md:gap-10 md:py-8">

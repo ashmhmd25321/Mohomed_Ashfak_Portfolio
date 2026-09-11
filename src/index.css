@@ -76,13 +76,23 @@
 
 @layer components {
   .container-universe {
-    width: min(1240px, calc(100% - 2rem));
+    width: min(1120px, calc(100% - 2rem));
     margin-inline: auto;
   }
 
   @media (min-width: 768px) {
     .container-universe {
-      width: min(1240px, calc(100% - 3rem));
+      width: min(1120px, calc(100% - 3rem));
+    }
+  }
+
+  .section-pad {
+    padding-block: 3.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-pad {
+      padding-block: 4.5rem;
     }
   }
 
@@ -158,9 +168,9 @@
 /* Reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(16px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .reveal.is-in {
   opacity: 1;

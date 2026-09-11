@@ -4,7 +4,7 @@ import { Reveal, SectionLabel } from "./system/Reveal";
 
 export default function About() {
   return (
-    <section id="about" className="relative py-16 md:py-36">
+    <section id="about" className="relative section-pad">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="01">Identity</SectionLabel>
@@ -15,7 +15,7 @@ export default function About() {
           </h2>
         </Reveal>
 
-        <div className="mt-10 grid gap-10 lg:mt-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+        <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
           <Reveal className="space-y-5 text-base leading-relaxed text-ivory-dim md:space-y-6 md:text-xl">
             <p className="text-ivory">
               I don't collect frameworks. I build products that have to survive
@@ -46,7 +46,7 @@ export default function About() {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line md:mt-20 md:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-line bg-line md:mt-12 md:grid-cols-4">
           {stats.map((stat, i) => (
             <Reveal
               key={stat.label}

@@ -11,7 +11,7 @@ export default function Skills() {
   );
 
   return (
-    <section id="skills" className="relative py-16 md:py-32">
+    <section id="skills" className="relative section-pad">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="05">Technology</SectionLabel>
@@ -26,7 +26,7 @@ export default function Skills() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-8 lg:mt-16 lg:grid-cols-[1fr_320px] lg:gap-10">
+        <div className="mt-8 grid gap-8 lg:mt-10 lg:grid-cols-[1fr_320px] lg:gap-10">
           <aside className="glass-panel sticky top-24 z-10 h-fit rounded-3xl p-5 md:p-6 lg:order-2 lg:top-28">
             <p className="label-meta">Selected</p>
             <h3 className="display mt-3 text-2xl text-ivory md:text-3xl">{active}</h3>

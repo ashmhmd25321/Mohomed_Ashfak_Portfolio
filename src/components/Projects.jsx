@@ -88,7 +88,7 @@ export default function Projects() {
   const more = projects.filter((p) => !flagshipIds.includes(p.id));
 
   return (
-    <section id="work" className="relative py-16 md:py-32">
+    <section id="work" className="relative section-pad">
       <div className="container-universe">
         <Reveal>
           <SectionLabel index="03">Selected work</SectionLabel>
@@ -104,7 +104,7 @@ export default function Projects() {
         </Reveal>
       </div>
 
-      <div className="mt-12 space-y-16 md:mt-16 md:space-y-40">
+      <div className="mt-8 space-y-14 md:mt-10 md:space-y-20">
         {featured.map((project, i) => (
           <article key={project.id} className="relative">
             <div className="container-universe grid items-center gap-6 lg:grid-cols-12 lg:gap-14">
@@ -177,7 +177,7 @@ export default function Projects() {
       </div>
 
       {more.length > 0 && (
-        <div className="container-universe mt-16 md:mt-36">
+        <div className="container-universe mt-14 md:mt-16">
           <Reveal>
             <p className="label-meta text-gold">More work</p>
             <h3 className="display mt-4 max-w-3xl text-2xl text-ivory md:text-4xl">

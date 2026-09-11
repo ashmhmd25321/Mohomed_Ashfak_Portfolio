@@ -9,13 +9,13 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex h-auto min-h-[100svh] items-start overflow-x-clip pt-[5.75rem] pb-12 lg:h-[100svh] lg:min-h-[720px] lg:items-center lg:overflow-hidden lg:pt-20 lg:pb-6"
+      className="relative flex min-h-[100svh] items-start overflow-x-clip pt-[5.75rem] pb-10 lg:min-h-0 lg:items-center lg:overflow-hidden lg:pt-24 lg:pb-12"
     >
       <UniverseCanvas />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void via-transparent to-void" />
       <div className="pointer-events-none absolute left-[62%] top-[42%] h-[34vw] w-[34vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember/[0.08] blur-[110px]" />
 
-      <div className="container-universe relative z-10 grid w-full items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(340px,560px)] lg:gap-10">
+      <div className="container-universe relative z-10 grid w-full items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] lg:gap-12">
         <div className="min-w-0">
           <p className="label-meta mb-3 text-gold md:mb-4">{personalInfo.eyebrow}</p>
           <h1 className="display text-[clamp(2.5rem,11vw,3.5rem)] leading-[0.9] text-ivory sm:text-6xl md:text-7xl lg:text-[clamp(3.6rem,5.6vw,5.5rem)]">
@@ -58,7 +58,7 @@ export default function Hero() {
           <img
             src={personalInfo.profileImage}
             alt={`${personalInfo.name}, illustrated standee`}
-            className="portrait-art standee-figure relative z-[2] mx-auto h-auto w-full max-h-[min(42vh,280px)] object-contain object-bottom drop-shadow-[0_28px_40px_rgba(0,0,0,0.55)] sm:max-h-[min(52vh,420px)] lg:max-h-[min(68vh,620px)]"
+            className="portrait-art standee-figure relative z-[2] mx-auto h-auto w-full max-h-[min(42vh,280px)] object-contain object-bottom drop-shadow-[0_28px_40px_rgba(0,0,0,0.55)] sm:max-h-[min(52vh,420px)] lg:max-h-[min(56vh,480px)]"
           />
           <div className="standee-shadow" aria-hidden="true" />
           <div className="relative z-[2] mt-4 flex items-end justify-between gap-3 px-1 sm:mt-5 sm:gap-4">
